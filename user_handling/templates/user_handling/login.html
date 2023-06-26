@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block body %}
+<div class="card">
+    <div class="card-body">
+
+
+<form  method="post" action="{% url 'user_handling:user_login' %}">
+    {% csrf_token %}
+    {{form|crispy}}
+    <div>
+      <label for="id_username" class="card-title">Username:</label>
+      <input type="text" name="username" id="id_username">
+    </div>
+    <div>
+      <label for="id_password" class="card-title">Password:</label>
+      <input type="password" name="password" id="id_password">
+    </div>
+    <div>
+      <input type="submit" value="Login" name="submit" class="btn btn-primary">
+    </div>
+</form>
+  
+  <p class="card-text">Don't have an account? <a href="{% url 'user_handling:register' %}">Register</a></p>
+</div>
+</div>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block sidepanel %}
+<div class="col-md-3">
+    <div class="card p-3" style="background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+        <h5 class="card-title">Categories</h5>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action">Category 1</li>
+            <li class="list-group-item list-group-item-action">Category 2</li>
+            <li class="list-group-item list-group-item-action">Category 3</li>
+        </ul>
+    </div>
+    <div class="card p-3 mt-3" style="background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+        <h5 class="card-title">Tags</h5>
+        <div class="d-flex flex-wrap">
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 1</span>
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 2</span>
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 3</span>
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 4</span>
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 5</span>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block body %}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Welcome to Stack-Lite</h5>
+        <p class="card-text">Ask questions and get answers from the community.</p>
+    </div>
+    <div class="card-footer">
+        <p class="card-text">
+            Welcome to Stack-Lite, a thriving community built for knowledge sharing and collaborative problem-solving! 
+            Much like its namesake, Stack-Lite offers a streamlined and user-friendly platform where users can engage in 
+            vibrant discussions and seek assistance on a wide range of topics.
+        </p>
+        <p class="card-text">
+            Whether you're a seasoned professional or a curious learner,
+            Stack-Lite provides the perfect environment to connect with fellow enthusiasts and expand your understanding. 
+            Dive into our extensive collection of categories and find threads that pique your interest. 
+            Ask thought-provoking questions and receive insightful answers from our community members.
+        </p>
+        <p class="card-text">
+            At Stack-Lite, we value inclusivity and respect.
+            We encourage open-minded discussions, constructive feedback, and the cultivation of a supportive atmosphere. 
+            Our community members come from diverse backgrounds, fostering a rich tapestry of experiences and expertise.
+            Embrace the opportunity to collaborate, learn, and share knowledge with individuals who are as passionate as you are.
+        </p>
+        <p class="card-text">
+            Stay up-to-date with the latest trends, advancements, and best practices across various domains.
+            Discover hidden gems of wisdom and gain fresh perspectives that can shape your thinking. 
+            Our platform empowers you to make meaningful contributions, leaving a lasting impact on the community.
+        </p>
+        <p class="card-text">
+            Join Stack-Lite today and unlock a world of knowledge-sharing possibilities.
+            Engage with fellow enthusiasts, nurture your intellectual growth, and become an integral part of our vibrant community. 
+            Together, let's illuminate the path of knowledge and inspire others to join us on this enriching journey.
+        </p>
+    </div>
+</div>
+<br>
+
+{% endblock %}
+
+
+{% block footer %}
+<footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+        &copy; 2023 Stack Lite. All rights reserved.
+    </div>
+</footer>
+{% endblock %}
