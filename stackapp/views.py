@@ -2,9 +2,9 @@ from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .forms import TicketForm
+from .forms import TicketForm,CommentForm
 from django.views.generic.list import ListView
-from .models import Ticket
+from .models import Ticket,Comment
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
@@ -55,3 +55,36 @@ class SearchQuestionList(ListView):
            Q(title__icontains=query) | Q(describe__icontains=query)
             )
         return object_list
+
+@login_required
+def discussion(request, id):
+    obj = Ticket.objects.get(pk=id)
+    comments = Comment.objects.filter(solution_for_id=id)
+    
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.solution_for = obj
+            comment.user = request.user
+            comment.save()
+            return redirect("stackapp:discussion", id=id)
+
+    else:
+        form = CommentForm()
+    
+    context = {
+        "object": obj,
+        "form": form,
+        "comments": comments
+    }
+    return render(request, 'stackapp/discussion.html', context)
+
+
+
+@login_required
+def solution(request,id):
+    cmt = Comment.objects.get(pk=id)
+    context = {'comment':cmt}
+    return render(request,'stackapp/solution.html',context)
+

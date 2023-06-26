@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block sidepanel %}
+<div class="col-md-3">
+    <div class="card p-3" style="background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+        <h5 class="card-title">Categories</h5>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action">Category 1</li>
+            <li class="list-group-item list-group-item-action">Category 2</li>
+            <li class="list-group-item list-group-item-action">Category 3</li>
+        </ul>
+    </div>
+    <div class="card p-3 mt-3" style="background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+        <h5 class="card-title">Tags</h5>
+        <div class="d-flex flex-wrap">
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 1</span>
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 2</span>
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 3</span>
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 4</span>
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 5</span>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+
+<div class="col-md-12">
+    <!-- Context section -->
+    <div class="card">
+        <div class="card-body" style="background-color: antiquewhite;">
+            <h5 class="card-title">{{object.title}} |created by : {{object.maker}} on {{object.created_date}}</h5>
+            
+            <p class="card-title">describtion : {{object.describe}} </p>
+            <div class="card-body my-card-body" style="background-color: burlywood; max-height: 400px; overflow-y: auto;">
+                {% if object.code %}
+                    <p class="card-text">{{object.code}}</p>
+                {% endif %}
+            </div>
+           
+
+        </div>
+    </div>
+<br>
+    <!-- Comment box -->
+    <div class="card-body " style="background-color: antiquewhite;">
+        <h5 class="card-title">Give Solution</h5>
+        <button class="btn btn-primary" onclick="toggleForm()">Give Solution</button>
+        <form id="solutionForm" style="display: none;" action="{%url 'stackapp:discussion' id=object.id %}" method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+            <!-- <div class="form-group">
+                <label for="solutionText">Title:</label>
+                {{form.title}}
+            </div>
+            <div class="form-group">
+                <label for="authorName">Solution:</label>
+                {{form.solution}}
+            </div>
+            <div class="form-group">
+                <label for="authorName">Solution:</label>
+                {{form.code}}
+            </div> -->
+            <button type="submit" class="btn btn-success">Submit Solution</button>
+        </form>
+    </div>
+    
+
+    <!-- Recent comments -->
+    <div class="card mt-2">
+        <div class="card-body" style="background-color: blanchedalmond;">
+            <h5 class="card-title">Solutions</h5>
+            <div class="comment-list">
+                <!-- Add your recent comments here -->
+                <div class="comment-box">
+                    {% for comment in comments %}
+                    <div class="comment">
+                        <div class="card mt-2" style="background-color: antiquewhite; ">
+                            <div class="card-text">
+                            <strong>
+                                    <a href="{% url 'stackapp:solution' id=comment.id %}" class="comment-link">
+                                        {{ comment.title }}
+                                    </a> : by {{ comment.user.username }} | {{ comment.created_date }}
+                                </strong> 
+                            </div>
+                        </div>
+                        
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Add more comments as needed -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script>
+    function toggleForm() {
+        var form = document.getElementById("solutionForm");
+        if (form.style.display === "none") {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none";
+        }
+    }
+</script>
+
+
+{% endblock %}
+
+
+
+{% block footer %}
+<footer class="bg-dark text-white py-3 mt-3">
+    <div class="container text-center">
+        <p>&copy; 2023 Stack Lite. All rights reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Home</a></li>
+            <li class="list-inline-item"><a href="#">About</a></li>
+            <li class="list-inline-item"><a href="#">Contact</a></li>
+        </ul>
+    </div>
+</footer>
+{% endblock %}
