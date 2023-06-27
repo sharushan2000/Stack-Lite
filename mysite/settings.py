@@ -29,7 +29,7 @@ SECRET_KEY =env('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG =env('DJANGO_DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -59,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -98,12 +99,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres', 
-        'USER': 'postgres',
-        'PASSWORD': '0262224168',
-        'HOST': '127.0.0.1', 
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DJANGO_DB_NAME'),
+        'USER':env('DJANGO_DB_USERNAME'),
+        'PASSWORD':env('DJANGO_DB_PASSWORD'),
+        'HOST': env('DJANGO_DB_HOST'),
+        'PORT':env('DJANGO_DB_PORT'),
     }
 }
 
