@@ -27,7 +27,25 @@
 
 {% block body %}
 
-    {{comment.title}}
+
+    <div class="col-md-12">
+        <!-- Context section -->
+        <div class="card">
+            <div class="card-body" style="background-color: antiquewhite;">
+                <h5 class="card-title">{{comment.title}} |created by : {{comment.maker}} on {{comment.created_date}}</h5>
+                
+                <p class="card-title">describtion : {{comment.solution}} </p>
+                <div class="card-body my-card-body" style="background-color: burlywood; max-height: 400px; overflow-y: auto;">
+                    {% if comment.code %}
+                        <p class="card-text">{{object.code}}</p>
+                    {% endif %}
+                </div>
+               
+    
+            </div>
+        </div>
+    </div>
+
 
 {% endblock %}
 
