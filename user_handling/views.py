@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login ,logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.generic.list import ListView
+
 
 
 
@@ -78,5 +80,11 @@ def user_logout(request):
 def user_detail(request):
     user_id = request.user.id
     user_obj = get_object_or_404(User, id=user_id)
-    print(user_obj)
-    return render(request, "user_handling/user.html", {"user": user_obj})
+    
+    return render(request, "user_handling/userprofile.html", {"user": user_obj})
+
+
+def publicuser(request):
+    users = UserProfile.objects.filter(public =True)
+    context = {"users":users}
+    return render(request , "user_handling/publicuser.html",context)

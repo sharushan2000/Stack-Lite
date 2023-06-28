@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-picture text-center">
+                <img class ="rounded-circle account-img" src="{{ user.profile.pic.url }}" alt="Profile Picture" class="img-fluid rounded-circle">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="user-details">
+                <h1 class="mb-4">User Profile: {{ user.username }}</h1>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>First Name:</strong></p>
+                                <p>{{ user.first_name }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Last Name:</strong></p>
+                                <p>{{ user.last_name }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p><strong>Email:</strong></p>
+                                <p>{{ user.email }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p><strong>Bio:</strong></p>
+                                <p>{{ user.profile.bio }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p><strong>Github:</strong></p>
+                                <a href="{{user.github}}"><p>{{ user.profile.github }}</p></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p><strong>Public:</strong></p>
+                                <p>{{ user.profile.public }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block footer %}
+</br>
+<br>
+<footer class="bg-dark text-white py-3 mt-3">
+    <div class="container text-center">
+        <p>&copy; 2023 Stack Lite. All rights reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Home</a></li>
+            <li class="list-inline-item"><a href="#">About</a></li>
+            <li class="list-inline-item"><a href="#">Contact</a></li>
+        </ul>
+    </div>
+</footer>
+{% endblock %}

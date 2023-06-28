@@ -4,13 +4,15 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User ,on_delete=models.CASCADE) 
+    user = models.OneToOneField(User ,on_delete=models.CASCADE, related_name="profile") 
     bio = models.TextField(max_length=500 , blank=True ,default="---")
     pic = models.ImageField(default="default.jbg", upload_to="profile_pics")
+    public = models.BooleanField(default=False)
+    github = models.URLField(blank=True)
 
 
     def __str__(self) -> str:
-        return self.user.first_name
+        return self.user.first_name + " " + self.user.username
     
 
 
