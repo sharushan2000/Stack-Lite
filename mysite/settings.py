@@ -30,7 +30,7 @@ SECRET_KEY =env('DJANGO_SECRET_KEY')
 DEBUG =env('DJANGO_DEBUG')
 
 ALLOWED_HOSTS = ["*",]
-CSRF_TRUSTED_ORIGINS = [' web-production-5536.up.railway.app ',]
+CSRF_TRUSTED_ORIGINS = ['https://',]
 
 
 # Application definition
