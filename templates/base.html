@@ -35,6 +35,7 @@
 </head>
 
 <body style="background-color: rgb(174, 167, 167); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+    
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -52,7 +53,7 @@
                         <a class="nav-link" href="{% url 'stackapp:list_questions' %}">Questions</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Learn</a>
+                        <a class="nav-link" href="{% url 'learn:learn' %}">Learn</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'user_handling:publicusers' %}">Users</a>

@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
 
 {% block sidepanel %}
 <div class="col-md-3">
@@ -24,40 +23,49 @@
 </div>
 {% endblock %}
 
+
 {% block body %}
-<div class="row">
-    <div class="col-md-12">
-        <form method="GET" action="{% url 'stackapp:search_result' %}">
-            {% csrf_token %}
-            {{form|crispy}}
-            
-            <input name="search" type="text" placeholder="Search..." size="50">
-            <button type="submit" name="submit" value="submit" class="btn btn-primary" style="padding-bottom: 1%; margin-bottom: 2%;">Submit</button>
-        </form>
-     
-        <div class="card" style="background-color: bisque; border: none;">
-            <div class="card-body">
-                <h2 class="card-title">Recent Questions:</h2>
-                {% for question in questions %}
-                    <div class="row">
-                        <div class="col-12" style="background-color: blanchedalmond;">
-                            <div class="card my-3 animated fadeInUp" style="background-color: antiquewhite;">
-                                <div class="card-body my-card-body" style="height: 10%;">
-                                    <h5 class="card-title">
-                                        <a href="{%url 'stackapp:discussion' id=question.id %}" class="text-decoration-none">{{ question.title }}</a>
-                                    </h5>
-                                    <p class="card-text">{{ question.describe }}</p>
-                                    <a href="{% url 'stackapp:discussion' id=question.id  %}" class="btn btn-primary">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
+<div style="background-color: white; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+
+    <main>
+        <section class="my-4">
+            <h2>Python</h2>
+            <p>Learn Python programming language. Python is a versatile, high-level language known for its readability and ease of use.</p>
+            <a href="" class="btn btn-primary">Learn More</a>
+        </section>
+        <section class="my-4">
+            <h2>C++</h2>
+            <p>Explore C++ programming and development. C++ is a powerful language often used for system and game development.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+        </section>
+        <section class="my-4">
+            <h2>Java</h2>
+            <p>Discover Java programming and applications. Java is widely used for web and mobile app development.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+        </section>
+        <section class="my-4">
+            <h2>HTML</h2>
+            <p>Learn HTML for web development. HTML is the foundation of web pages and is essential for front-end development.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+        </section>
+        <section class="my-4">
+            <h2>Networking</h2>
+            <p>Explore networking concepts and technologies. Networking is crucial for communication between devices and systems.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+        </section>
+    </main>
 </div>
+<script>
+    // Add a fade-in animation using jQuery
+    $(document).ready(function () {
+        $("main").hide().fadeIn(1500); // Adjust the animation duration as needed
+    });
+</script>
 {% endblock %}
+
+
+
+
 
 {% block footer %}
 <footer class="bg-dark text-white py-3 mt-3">
