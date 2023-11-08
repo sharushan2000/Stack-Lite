@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
-
 {% block sidepanel %}
 <div class="col-md-3">
     <div class="card p-3" style="background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
@@ -27,18 +26,13 @@
 
 {% block body %}
 <div class="row">
-    
-
-
     <div class="col-md-12">
-        
-
         <form method="GET" action="{% url 'stackapp:search_result' %}">
             {% csrf_token %}
             {{form|crispy}}
             
             <input name="search" type="text" placeholder="Search..." size="50">
-            <button type="submit" name="submit" value="submit" class="btn btn-primary" style="padding-bottom: 1%; margin-bottom: 2%;" >Submit</button>
+            <button type="submit" name="submit" value="submit" class="btn btn-primary" style="padding-bottom: 1%; margin-bottom: 2%;">Submit</button>
         </form>
      
         <div class="card" style="background-color: bisque; border: none;">
@@ -47,8 +41,7 @@
                 {% for question in questions %}
                     <div class="row">
                         <div class="col-12" style="background-color: blanchedalmond;">
-
-                            <div class="card my-3 " style="background-color: antiquewhite;">
+                            <div class="card my-3 animated fadeInUp" style="background-color: antiquewhite;">
                                 <div class="card-body my-card-body" style="height: 10%;">
                                     <h5 class="card-title">
                                         <a href="{%url 'stackapp:discussion' id=question.id %}" class="text-decoration-none">{{ question.title }}</a>
@@ -62,8 +55,6 @@
                 {% endfor %}
             </div>
         </div>
-        
-    </div>
     </div>
 </div>
 {% endblock %}

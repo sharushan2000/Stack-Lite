@@ -14,4 +14,4 @@ urlpatterns = [
     path('dis/<int:id>',views.discussion ,name="discussion"),
     path('solution/<int:id>',views.solution,name="solution")
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

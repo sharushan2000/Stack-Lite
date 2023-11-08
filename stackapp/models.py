@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User ,on_delete=models.CASCADE, related_name="profile") 
+    is_email_activated  = models.BooleanField(default=False)
     bio = models.TextField(max_length=500 , blank=True ,default="---")
     pic = models.ImageField(default="default.jbg", upload_to="profile_pics")
     public = models.BooleanField(default=False)

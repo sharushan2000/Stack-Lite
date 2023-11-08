@@ -16,6 +16,9 @@ from django.views.generic.list import ListView
 # Create your views here.
 
 
+def activateEmail(request ,user ,profile ,email):
+    messages.success(request , f'dear <b>{user}</b> , please go to your email <b>{email}</b>')
+
 
 
 
@@ -28,11 +31,13 @@ def user_register(request):
         
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save(commit=False)
+            # email = user.get("email")
             user.set_password(user_form.cleaned_data['password'])
             user.save()
-            
             profile = profile_form.save(commit=False)
             profile.user = user
+            profile.is_email_activated = False
+            activateEmail(request ,user ,profile ,user_form.cleaned_data['email'])
             profile.save()
             
             return redirect('user_handling:user_login')
