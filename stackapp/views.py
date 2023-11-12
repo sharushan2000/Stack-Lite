@@ -24,7 +24,7 @@ def create_ticket(request):
         if ticket_form.is_valid():
             ticket = ticket_form.save(commit=False)
             ticket.maker = request.user
-            print(request.user)
+            #print(request.user)
             ticket.save()
 
             return redirect("stackapp:list_questions")
