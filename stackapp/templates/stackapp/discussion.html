@@ -36,7 +36,7 @@
             <p class="card-title">describtion : {{object.describe}} </p>
             <div class="card-body my-card-body" style="background-color: burlywood; max-height: 400px; overflow-y: auto;">
                 {% if object.code %}
-                    <pre class="card-text">{{object.code}}</pre>
+                    <pre><code class="card-text" style="font-weight: bold;">{{object.code}}></code></pre>
                 {% endif %}
             </div>
            

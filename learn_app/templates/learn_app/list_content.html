@@ -1,0 +1,68 @@
+<!-- content_list.html -->
+
+{% extends "base.html" %}
+
+{% block sidepanel %}
+<div class="col-md-3">
+    <div class="card p-3" style="background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+        <h5 class="card-title">Categories</h5>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action">Category 1</li>
+            <li class="list-group-item list-group-item-action">Category 2</li>
+            <li class="list-group-item list-group-item-action">Category 3</li>
+        </ul>
+    </div>
+    <div class="card p-3 mt-3" style="background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+        <h5 class="card-title">Tags</h5>
+        <div class="d-flex flex-wrap">
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 1</span>
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 2</span>
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 3</span>
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 4</span>
+            <span class="badge badge-primary mr-2 mb-2 tag-item">Tag 5</span>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block body %}
+  <div class="col-md-12"> <!-- width -->
+    <h2>Content List</h2>
+
+  {% for content in content_list %}
+    <div class="card mb-4 animated fadeInUp">
+      <div class="card-body">
+        <h3 class="card-title">{{ content.title }}</h3>
+        <p class="card-text">{{ content.describe }}</p>
+        <p class="card-text"><small class="text-muted">Content Type: {{ content.content_type.name }}</small></p>
+        <p class="card-text"><small class="text-muted">Created Date: {{ content.created_date }}</small></p>
+        {% if content.github %}
+          <p class="card-text"><small class="text-muted">GitHub: <a href="{{ content.github }}" target="_blank">{{ content.github }}</a></small></p>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+  
+
+
+
+    <!-- <div class="pagination">
+      <span class="step-links">
+        {% if content_list.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ content_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+          Page {{ content_list.number }} of {{ content_list.paginator.num_pages }}.
+        </span>
+
+        {% if content_list.has_next %}
+          <a href="?page={{ content_list.next_page_number }}">next</a>
+          <a href="?page={{ content_list.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+      </span>
+    </div>
+  </div> -->
+{% endblock %}

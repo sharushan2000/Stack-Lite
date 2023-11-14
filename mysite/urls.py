@@ -26,4 +26,6 @@ urlpatterns = [
     path('stacklit/',include("stackapp.urls")),
     path('user/',include("user_handling.urls")),
     path('', views.index , name="index"),
+    path('learn/' ,include("learn_app.urls")),
+    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

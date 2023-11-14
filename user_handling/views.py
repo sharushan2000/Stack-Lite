@@ -83,10 +83,11 @@ def user_logout(request):
 
 @login_required
 def user_detail(request):
-    user_id = request.user.id
-    user_obj = get_object_or_404(User, id=user_id)
+    user= request.user
+    context = {"user":user}
+    #user_obj = get_object_or_404(User, id=user_id)
     
-    return render(request, "user_handling/userprofile.html", {"user": user_obj})
+    return render(request, "user_handling/userprofile.html", context)
 
 
 def publicuser(request):

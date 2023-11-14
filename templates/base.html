@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stack-Lite</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
     <style>
         body {
             padding-top: 0; /* Remove top space */
@@ -31,6 +32,19 @@
         .navbar-nav.ml-auto {
             margin-left: auto;
         }
+        /* styles.css */
+        .profile-container {
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            border: 2px solid #ccc;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: auto;
+        }
+
     </style>
 </head>
 
@@ -53,7 +67,7 @@
                         <a class="nav-link" href="{% url 'stackapp:list_questions' %}">Questions</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Learn</a>
+                        <a class="nav-link" href="{% url 'learn_app:list' %}">Learn</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'user_handling:publicusers' %}">Users</a>

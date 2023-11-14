@@ -38,14 +38,14 @@ def create_ticket(request):
 
 class QuestionList(ListView):
     model= Ticket
-    paginate_by = 20
+    paginate_by = 10
     template_name = "stackapp/queslistview.html"
     context_object_name = "questions"
     
 
 class SearchQuestionList(ListView):
     model =Ticket
-    paginate_by = 20
+    paginate_by = 10 
     template_name = "stackapp/queslistview.html"
     context_object_name = "questions"
 

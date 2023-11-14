@@ -5,14 +5,20 @@
 {% block body %}
 <div class="container">
     <div class="row">
+
         <div class="col-md-4">
             <div class="profile-picture text-center">
-                <img class ="rounded-circle account-img" src="{{ user.profile.pic.url }}" alt="Profile Picture" class="img-fluid rounded-circle">
+                <div class="profile-container">
+                    <!-- <img src="{{ user.profile.pic.url }}" alt="Profile Picture" class="profile-pic"> -->
+                    <img class ="profile-container" src="{{ user.profile.pic.url }}" alt="Profile Picture" >
+                </div>
+                
+                
             </div>
         </div>
         <div class="col-md-8">
             <div class="user-details">
-                <h1 class="mb-4">User Profile: {{ user.username }}</h1>
+                <h1 class="mb-4">User Profile: {{ number }}</h1>
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
